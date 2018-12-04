@@ -11,7 +11,11 @@
  */
 
 function sayHello() {
-
+  const canvas = document.getElementById('canvas1');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, 50, 10);
+  ctx.font = "48px sans-serif";
+  ctx.strokeText("Hello, World!", 10, 50);
 }
 
 /*
@@ -38,7 +42,20 @@ function sayHello() {
  */
 
 function drawRectangle() {
-
+  const canvas = document.getElementById('canvas2');
+  const ctx = canvas.getContext('2d');
+  ctx.getContext(0, 0, canvas.width, canvas.height);
+  let height;
+  let width;
+  let x;
+  let y;
+  while(true) {
+    height=prompt("Height: ");
+    width=prompt("Width: ");
+    x=prompt("X: ")
+    y=prompt("Y: ")
+    if(x<5 || width<1 ||)
+  }
 }
 
 /*

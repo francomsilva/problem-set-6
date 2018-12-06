@@ -44,7 +44,7 @@ function sayHello() {
 function drawRectangle() {
   const canvas = document.getElementById('canvas2');
   const ctx = canvas.getContext('2d');
-  ctx.getContext(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width2, canvas2.height);
   let height;
   let width;
   let x;
@@ -54,8 +54,14 @@ function drawRectangle() {
     width=prompt("Width: ");
     x=prompt("X: ")
     y=prompt("Y: ")
-    if(x<5 || width<1 ||)
+    if(x<5 || y<5 || width<1 || height<1 || canvas.width - x - width<0 || canvas.height - y - height<0) {
+      continue;
+    }
+    else {
+      break;
+    }
   }
+  ctx.strokeRect(x, y, width, height);
 }
 
 /*
@@ -84,7 +90,16 @@ function drawRectangle() {
  */
 
 function drawColoredRectangle() {
-
+  const canvas = document.getElementById('canvas3');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas3.width, canvas3.height);
+  let color=prompt("Color: ");
+    if (color === "black" || color === "blue" || color === "green" || color === "orange" || color === "purple" || color === "red" || color === "yellow") {
+    ctx.filStyle = color;
+    ctx.fillRect(10, 10, 100, 50)
+  } else {
+      alert(color + " is an unsupported color.")
+  }
 }
 
 /*
@@ -117,7 +132,8 @@ function drawColoredRectangle() {
  */
 
 function drawTriangle() {
-
+  const canvas = document.getElementById('canvas4');
+  const ctx = canvas.getContext('2d');
 }
 
 /*

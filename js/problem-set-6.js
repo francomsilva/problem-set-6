@@ -135,41 +135,7 @@ function drawTriangle() {
   const canvas = document.getElementById('canvas4');
   const ctx = canvas.getContext('2d');
   cleatRect(0, 0, canvas4.width, canvas4.height);
-  let sideOne;
-  let sideTwo;
-  let sideThree;
-  let draw = false
-  while(true) {
-    sideOne = Number(prompt("Side 1: "));
-    sideTwo = Number(prompt("Side 2: "));
-    sideThree = Number(prompt("Side 3: "));
-    if ((sideOne * sideOne + sideTwo * sideTwo == sideThree * sideThree)) &&
-      sideOne>0 && sideTwo>0 && sideThree>0 &&
-      canvas4.width - 10 - sideOne >=0 && canvas4.height - 10 - sideTwo >=0 {
-        draw = true
-      }
-    else if (draw) {
-    ctx.beginPath();
-    ctx.moveTo(10, 10);
-    ctx.lineTo(10, 10 + sideTwo);
-    ctx.lineTo(10 + sideOne, 10y);
-    ctx.lineTo(10, 10);
-    ctx.closePath();
-    ctx.stroke();
-    }
-    else if{
-      alert("That is not a valid triangle.");
-    }
-    if(draw) {
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    ctx.lineTo(x, y + sideTwo);
-    ctx.lineTo(x + sideOne, y);
-    ctx.lineTo(x, y);
-    ctx.closePath();
-    ctx.stroke();
-    }
-  }
+  
 }
 
 /*

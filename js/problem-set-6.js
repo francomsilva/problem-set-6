@@ -134,8 +134,37 @@ function drawColoredRectangle() {
 function drawTriangle() {
   const canvas = document.getElementById('canvas4');
   const ctx = canvas.getContext('2d');
-  cleatRect(0, 0, canvas4.width, canvas4.height);
-  
+  ctx.clearRect(0, 0, canvas4.width, canvas4.height);
+  let side1;
+  let side2;
+  let side3;
+  let x = 10;
+  let y = 10;
+  while (true) {
+     side1 = Number(prompt("Side 1: "));
+     side2 = Number(prompt("Side 2: "));
+     side3 = Number(prompt("Side 3: "));
+     if (((side1**2) + (side2**2) == (side3**2)) && side1 > 0 && side2 > 0 && side3 > 0 && canvas4.width  - x - side1 >= 0 && canvas4.height - y - side2 >=0) {
+       break;
+     }
+     else {
+       alert("That is not a valid triangle.")
+       break;
+     }
+  }
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x, y + side1);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(x, y + side1);
+    ctx.lineTo(x + side2, y + side1);
+    ctx.stroke();
+
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + side2, y + side1);
+    ctx.stroke();
 }
 
 /*
@@ -158,7 +187,35 @@ function drawTriangle() {
  */
 
 function drawSmileyFace() {
+  const canvas = document.getElementById('canvas5');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas5.width, canvas5.height);
+  let radius;
+  while (true) {
+    radius = Number(prompt("Radius: "));
+    if (radius >= 1 && radius <= canvas5.width && Number.isInteger(radius)) {
+      break;
+    }
+  }
+  let x = canvas5.width
+  let y = canvas5.height
+  let eye = radius * .1
+  let smile = radius * .7
+  ctx.beginPath();
+  ctx.arc (x / 2, y / 2, radius, 0, Math.PI * 2);
+  ctx.stroke ();
 
+  ctx.beginPath();
+  ctx.arc (x / 2 - radius / 3, y / 2 - radius / 4, eye, 0, Math.PI * 2);
+  ctx.stroke ();
+
+  ctx.beginPath();
+  ctx.arc (x / 2 + radius / 3, y / 2 - radius / 4, eye, 0, Math.PI * 2);
+  ctx.stroke ();
+
+  ctx.beginPath();
+  ctx.arc (x / 2, y / 2, smile, 0, Math.PI * 2);
+  ctx.stroke ();
 }
 
 /*

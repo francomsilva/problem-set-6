@@ -214,7 +214,7 @@ function drawSmileyFace() {
   ctx.stroke ();
 
   ctx.beginPath();
-  ctx.arc (x / 2, y / 2, smile, 0, Math.PI * 2);
+  ctx.arc (x / 2, y / 2, smile, 0, Math.PI);
   ctx.stroke ();
 }
 
@@ -237,7 +237,38 @@ function drawSmileyFace() {
  */
 
 function drawStar() {
-
+  const canvas = document.getElementById('canvas6');
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas6.width, canvas6.height);
+  
+    let outerRadius = Number(prompt("Enter an outer radius."));
+      let innerRadius = Number(prompt("Enter an inner radius."));
+      if (outerRadius >= innerRadius && canvas6.width >= outerRadius + 125 && canvas6.height >= outerRadius + 125 && innerRadius >= 1 && outerRadius >= 1){
+        let points = 5;
+        let outerx = [];
+        let outery = [];
+        let innerx = [];
+        let innery = [];
+        for(let i = 0; i < points; i++){
+          outerx.push(Math.cos((Math.PI *2 * i) / points - (Math.PI / 2)) * outerRadius + 125);
+          outery.push(Math.sin((Math.PI * 2 * i) / points - (Math.PI / 2)) * outerRadius + 125);
+          innerx.push(Math.cos(((Math.PI * 2 * i) / points) - (Math.PI / 2) + (Math.PI / points)) * innerRadius + 125);
+          innery.push(Math.sin(((Math.PI * 2 * i) / points) - (Math.PI / 2) + (Math.PI / points)) * innerRadius + 125);
+        }
+        ctx.beginPath();
+        ctx.moveTo(outerx[0], outery[0]);
+        for(let j = 0; j < outerx.length; j++){
+          ctx.lineTo(innerx[j], innery[j]);
+          ctx.lineTo(outerx[j+1], outery[j+1]);
+        }
+        ctx.lineTo(outerx[0], outery[0]);
+        ctx.stroke();
+        ctx.closePath();
+    }
+    else{
+      alert("Invaid Input(s). Try again.");
+      break;
+      }
 }
 
 /*
@@ -256,7 +287,37 @@ function drawStar() {
  */
 
 function drawStopSign() {
+  let canvas = document.getElementById('canvas7');
+  let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas7.width, canvas7.height);
+  let lengthOfSide = 80;
+  let center = [10 + (lengthOfSide) / 2 + lengthOfSide / Math.sqrt(2), 10 + (lengthOfSide / 2) + (lengthOfSide / Math.sqrt(2))]
+  console.log(center)
+  let numberOfVertices = 8;
+  let vertexX = [];
+  let vertexY = [];
 
+  for(let i = 0; i < numberOfVertices; i++){
+    vertexX.push(Math.cos(((Math.PI * 2 * i) / numberOfVertices) - Math.PI / 8) * 100 + center[0]);
+    vertexY.push(Math.sin(((Math.PI * 2 * i) / numberOfVertices) - Math.PI / 8) * 100 + center[1]);
+  }
+  ctx.beginPath();
+  ctx.moveTo([vertexX][0], vertexY[0]);
+  for(let j=0; j < vertexX.length; j++){
+    ctx.lineTo(vertexX[j], vertexY[j]);
+  }
+  ctx.lineTo(vertexX[0], vertexY[0]);
+  ctx.stroke();
+
+  ctx.fillStyle= "red";
+  ctx.fill();
+  ctx.closePath();
+  ctx.beginPath();
+  ctx.textAlign= "center";
+  ctx.font= "56px Georgia";
+  ctx.fillStyle= "white";
+  ctx.fillText("STOP", center[0], center[1] + 15);
+  ctx.closePath()
 }
 
 /*
@@ -278,6 +339,28 @@ function drawStopSign() {
  */
 
 function drawPyramid() {
+  let canvas = document.getElementById('canvas8');
+  let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas8.width, canvas8.height);
+  let lengthOfSide = Number(prompt("Enter side length."));
+  let x = 10;
+  let y = canvas8.height - 10;
+  let i = 0;
+  lineNumber = 1;
+  else{
+    alert("Invaid Input (s). Try again.");
+    break;
+  }
+  while(i < 5){
+    for(let j = 0 + lineNumber; j <= 5; j++){
+      ctx.strokeRect(x, y - lengthOfSide, lengthOfSide, lengthOfSide);
+      x += lengthOfSide;
+    }
+    x = 10 + (lengthOfSide / 2) * lineNumber;
+    y -= lengthOfSide;
+    lineNumber++;
+    i++;
+  }
 
 }
 
@@ -311,5 +394,54 @@ function drawPyramid() {
  */
 
 function drawHouse() {
+  let canvas = document.getElementById('canvas9');
+  let ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas9.width, canvas9.height);
 
+  while(true){
+  let colorOfDoor = prompt("Enter a color for the Door.");
+  let colorOfHouse = prompt("Enter a color for the House.");
+  if((colorOfDoor=="brown" || colorOfDoor=="blue" || colorOfDoor=="green" || colorOfDoor=="orange" || colorOfDoor=="purple" || colorOfDoor=="red" || colorOfDoor=="yellow")
+  && (colorOfHouse=="brown" || colorOfHouse=="blue" || colorOfHouse=="green" || colorOfHouse=="orange" || colorOfHouse=="purple" || colorOfHouse=="red" || colorOfHouse=="yellow")) {
+    break;
+  }
+  else{
+    alert("One or more of your colors is invalid");
+    break;
+  }
+}
+let x = 150;
+let lengthHouse = 576;
+let heightHouse = 400;
+let y = canvas8.height - heightHouse - 10;
+ctx.beginPath();
+
+ctx.fillStyle = colorOfHouse;
+ctx.fillRect(x, y, lengthHouse, heightHouse);
+  
+ctx.fillStyle = colorOfDoor;
+ctx.fillRect(x + (lengthHouse / 2) - 30,y + 300,60,100);
+ctx.strokeRect(x + (lengthHouse / 2) - 30,y + 300,60,100);
+ctx.stroke();
+
+
+ctx.fillStyle="gray";
+ctx.moveTo(x, y);
+ctx.lineTo(x + 286, 150);
+ctx.lineTo(x + lengthHouse, y);
+ctx.lineTo(x, y);
+ctx.fill();
+
+ctx.fillStyle="#ADD8E6";
+ctx.fillRect(300, y + 100, 50, 50);
+ctx.fillRect(526, y + 100, 50, 50);
+ctx.fillRect(300, y + 200, 50, 50);
+ctx.fillRect(526, y + 200, 50, 50);
+ctx.closePath();
+
+ctx.beginPath();
+ctx.fillStyle='black';
+ctx.arc(450, 700, 6, 0, Math.PI*2);
+ctx.fill();
+ctx.closePath()
 }

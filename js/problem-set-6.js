@@ -94,11 +94,11 @@ function drawColoredRectangle() {
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas3.width, canvas3.height);
   let color=prompt("Color: ");
-    if (color === "black" || color === "blue" || color === "green" || color === "orange" || color === "purple" || color === "red" || color === "yellow") {
-    ctx.filStyle = color;
+    if (color == "black" || color == "blue" || color == "green" || color == "orange" || color == "purple" || color == "red" || color == "yellow") {
+    ctx.fillStyle = color;
     ctx.fillRect(10, 10, 100, 50)
   } else {
-      alert(color + " is an unsupported color.")
+      alert("Try another color.")
   }
 }
 
@@ -240,8 +240,8 @@ function drawStar() {
   const canvas = document.getElementById('canvas6');
   const ctx = canvas.getContext('2d');
   ctx.clearRect(0, 0, canvas6.width, canvas6.height);
-  
-    let outerRadius = Number(prompt("Enter an outer radius."));
+
+      let outerRadius = Number(prompt("Enter an outer radius."));
       let innerRadius = Number(prompt("Enter an inner radius."));
       if (outerRadius >= innerRadius && canvas6.width >= outerRadius + 125 && canvas6.height >= outerRadius + 125 && innerRadius >= 1 && outerRadius >= 1){
         let points = 5;
@@ -259,7 +259,7 @@ function drawStar() {
         ctx.moveTo(outerx[0], outery[0]);
         for(let j = 0; j < outerx.length; j++){
           ctx.lineTo(innerx[j], innery[j]);
-          ctx.lineTo(outerx[j+1], outery[j+1]);
+          ctx.lineTo(outerx[j + 1], outery[j + 1]);
         }
         ctx.lineTo(outerx[0], outery[0]);
         ctx.stroke();
@@ -267,7 +267,6 @@ function drawStar() {
     }
     else{
       alert("Invaid Input(s). Try again.");
-      break;
       }
 }
 
@@ -347,10 +346,6 @@ function drawPyramid() {
   let y = canvas8.height - 10;
   let i = 0;
   lineNumber = 1;
-  else{
-    alert("Invaid Input (s). Try again.");
-    break;
-  }
   while(i < 5){
     for(let j = 0 + lineNumber; j <= 5; j++){
       ctx.strokeRect(x, y - lengthOfSide, lengthOfSide, lengthOfSide);
@@ -399,15 +394,14 @@ function drawHouse() {
   ctx.clearRect(0, 0, canvas9.width, canvas9.height);
 
   while(true){
-  let colorOfDoor = prompt("Enter a color for the Door.");
-  let colorOfHouse = prompt("Enter a color for the House.");
+  colorOfDoor = prompt("Enter a color for the Door");
+  colorOfHouse = prompt("Enter a color for the House");
   if((colorOfDoor=="brown" || colorOfDoor=="blue" || colorOfDoor=="green" || colorOfDoor=="orange" || colorOfDoor=="purple" || colorOfDoor=="red" || colorOfDoor=="yellow")
   && (colorOfHouse=="brown" || colorOfHouse=="blue" || colorOfHouse=="green" || colorOfHouse=="orange" || colorOfHouse=="purple" || colorOfHouse=="red" || colorOfHouse=="yellow")) {
     break;
   }
   else{
     alert("One or more of your colors is invalid");
-    break;
   }
 }
 let x = 150;
@@ -418,10 +412,10 @@ ctx.beginPath();
 
 ctx.fillStyle = colorOfHouse;
 ctx.fillRect(x, y, lengthHouse, heightHouse);
-  
+
 ctx.fillStyle = colorOfDoor;
-ctx.fillRect(x + (lengthHouse / 2) - 30,y + 300,60,100);
-ctx.strokeRect(x + (lengthHouse / 2) - 30,y + 300,60,100);
+ctx.fillRect(x + (lengthHouse / 2) - 30, y + 300, 60, 100);
+ctx.strokeRect(x + (lengthHouse / 2) - 30, y + 300, 60, 100);
 ctx.stroke();
 
 
